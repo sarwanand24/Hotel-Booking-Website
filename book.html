@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Your Rooms</title>
+         <meta charset="UTF-8">
+            <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+        <meta name="viewport" content="width=device-width , initial-scale=1, user-scalable = 0 ">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html,body{
+    background-color:peachpuff;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;    
+        }
+::-webkit-scrollbar{
+    display: none;
+}
+
+.nav{
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    padding: 1%
+}
+
+.n-elem{
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    padding-right: 3%;
+}
+
+.n-inp{
+    background-color: transparent;
+   border-style: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    color: red;
+    width: 35px;
+}
+
+.n-elem span{
+    color: red;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  background-color: #333;
+  color: #aaa;
+  font-family: 'Josefin Sans';
+}
+
+.calendar {
+  width: 350px;
+  margin: 50px auto 0;
+}
+
+.calendar__month {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 10px 0;
+  width: 100%;
+  position: relative;
+}
+
+.cal-month__previous,
+.cal-month__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  
+  &:hover {
+    background-color: #42A5F5;
+    box-shadow: 0 5px 5px -5px rgba(0,0,0,0.75);
+    border-radius: 50%;
+    font-weight: 800;
+    color: #111;
+  }
+}
+
+.cal-month__next {
+  right: 0;
+}
+
+.cal-month__current {
+  text-align: center;
+  color: #e1e1e1;
+}
+
+.cal-head__day,
+.cal-body__day {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.cal-body__week,
+.calendar__head {
+  display: block;
+  height: 50px;
+  width: 350px;
+}
+
+.calendar__head {
+  line-height: 50px;
+  position: relative;
+  
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #90CAF9;
+  }
+}
+
+.cal-body__day {
+  color: #777;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cal-day__month--current {
+  color: #e1e1e1;
+}
+
+.cal-day__day--today {
+  font-weight: 800;
+  color: #2196f3;
+}
+
+.cal-day__day--selected {
+  background-color: #2196f3;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, .75);
+  border-radius: 50%;
+  color: #111;
+}
+
+.check{
+        padding: 5%;
+}
+
+.in{
+    font-size: large;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    color: teal;
+    position: absolute;
+    left: 3%;
+}
+.line{
+    border-left: 6px solid #6a82fb;
+    border-radius: 10px;
+    height: 25px;
+    position: absolute;
+    left: 50%;
+}
+
+.out{
+    font-size: large;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    color: teal;
+    position: absolute;
+    right: 3%;
+}
+
+.h{
+    font-size: 18px;
+    color: rgb(0, 81, 128);
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+    padding: 5%;
+}
+
+.pref{
+  font-size: medium;
+  color: white;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 5%;
+}
+
+.pref li{
+    padding: 2%;
+}
+
+.gol:checked{
+   color: red;
+}
+
+.pr{
+    padding: 5%;
+    text-align: right;
+font-size: large;
+color: red;
+font-weight: bolder;
+font-family: 'Times New Roman', Times, serif;
+}
+
+.btn{
+   width: 50%;
+   height: 50px;
+   font-size: 30px;
+   border-radius: 20px;
+   background-color: #2196f3;
+   color: white;
+   font-weight: 500;
+   font-family: Arial, Helvetica, sans-serif;
+   border-style: outset;
+}
+
+.inps{
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    font-size: large;
+    color: red;
+    border-bottom: 1px solid black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#details{
+   position: absolute;
+   top: 10%;
+   left: 10%;
+    width: 80%;
+    background-color: peachpuff;
+    padding: 5%;
+    display: none;
+}
+
+.dtl{
+  padding-top: 2%;
+    background-color:red;
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    text-align: center;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.info{
+    font-size: 18px;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 2%;
+}
+
+.des{
+    font-size: 18px;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 4%;
+}
+
+.btn-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.submit{
+    width: 50%;
+    height: 40px;
+    background-color: red;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border-style: inset;
+}
+
+</style>
+    </head>
+
+    <body>
+
+      <div id="flag-dtl">
+
+        <div class="nav">
+            <p class="n-elem">Persons: <span id="nop">2</span>,</p><!----Need to set max value below in js with the help of firebase get() of available rooms in database------->
+            <p class="n-elem">Rooms: <input type="number" value="1" min="1" id="rinp" class="n-inp" /></p>
+        </div>
+     <div id="d">
+        <p class="date-in">Check-In  <input type="date" class="inps" id="dateOpen" /></p>
+        <p class="date-in">Check-Out  <input type="date" class="inps" id="dateClose" /></p>
+</div>
+        <!--- CALENDAR -->
+        <div class="calendar">
+            <div class="calendar__month">
+              <div class="cal-month__previous"><</div>
+              <div class="cal-month__current">May 2023</div>
+              <div class="cal-month__next">></div>
+            </div>
+            <div class="calendar__head">
+              <div class="cal-head__day">Sun</div>
+              <div class="cal-head__day">Mon</div>
+              <div class="cal-head__day">Tue</div>
+              <div class="cal-head__day">Wed</div>
+              <div class="cal-head__day">Thurs</div>
+              <div class="cal-head__day">Fri</div>
+              <div class="cal-head__day">Sat</div>
+            </div>
+            <div class="calendar__body">
+              <div class="cal-body__week">
+                <div class="cal-body__day">30</div>
+                <div class="cal-body__day">1</div>
+                <div class="cal-body__day">2</div>
+                <div class="cal-body__day">3</div>
+                <div class="cal-body__day">4</div>
+                <div class="cal-body__day">5</div>
+                <div class="cal-body__day">6</div>
+              </div>
+              <div class="cal-body__week">
+                <div class="cal-body__day">7</div>
+                <div class="cal-body__day">8</div>
+                <div class="cal-body__day">9</div>
+                <div class="cal-body__day">10</div>
+                <div class="cal-body__day">11</div>
+                <div class="cal-body__day">12</div>
+                <div class="cal-body__day">13</div>
+              </div>
+              <div class="cal-body__week">
+                <div class="cal-body__day">14</div>
+                <div class="cal-body__day">15</div>
+                <div class="cal-body__day">16</div>
+                <div class="cal-body__day">17</div>
+                <div class="cal-body__day">18</div>
+                <div class="cal-body__day">19</div>
+                <div class="cal-body__day">20</div>
+              </div>
+              <div class="cal-body__week">
+                <div class="cal-body__day">21</div>
+                <div class="cal-body__day">22</div>
+                <div class="cal-body__day">23</div>
+                <div class="cal-body__day">24</div>
+                <div class="cal-body__day">25</div>
+                <div class="cal-body__day">26</div>
+                <div class="cal-body__day">27</div>
+              </div>
+              <div class="cal-body__week">
+                <div class="cal-body__day">28</div>
+                <div class="cal-body__day">29</div>
+                <div class="cal-body__day">30</div>
+                <div class="cal-body__day">31</div>
+                <div class="cal-body__day">1</div>
+                <div class="cal-body__day">2</div>
+                <div class="cal-body__day">3</div>
+              </div>
+              <div class="cal-body__week">
+                <div class="cal-body__day">4</div>
+                <div class="cal-body__day">5</div>
+                <div class="cal-body__day">6</div>
+                <div class="cal-body__day">7</div>
+                <div class="cal-body__day">8</div>
+                <div class="cal-body__day">9</div>
+                <div class="cal-body__day">10</div>
+              </div>
+            </div>
+          </div>
+
+<div class="check">
+    <p class="in">Check-In: <span style="color: red;">Anytime</span></p>
+    <div class="line"></div>
+    <p class="out">Check-Out: <span style="color: red;">10:00am</span></p>
+    </div>
+
+    <p class="h">Select Your Preferences</p>
+
+    <ul class="pref" id="pref">
+        <li>Double Bed &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="bed" class="gol" id="db"></li>
+        <li>Single Bed &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="bed" class="gol" id="sb"></li>
+        <li>Large Room &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="bed" class="gol" id="lb"></li>
+        <li>A.C &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="ac" class="gol" id="ac"></li>
+        <li>Non-A.C &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="ac" class="gol" id="nac"></li>
+        </ul>
+
+        <p class="pr">Price (Day1): <span style="color: #2196f3;" id="price"></span></p>
+
+        <div style="display: flex;justify-content: center;align-items: center;"> <button type="submit" class="btn" id="btn">Book</button> </div>
+
+        </div>
+
+        <div id="details">
+          <p class="dtl">Complete Booking</p>
+          <p class="info">Name: <input type="text" class="inps" id="nameInp" /></p> 
+          <p class="info">Address:<input type="text" class="inps" id="addressInp" /></p> 
+          <p class="info">Mobile No: <input type="tel" class="inps" id="mobInp" /></p> 
+          <div class="btn-style"> <button type="submit" class="submit" id="submit">Submit</button> </div>
+          </div>
+
+    </body>
+
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCNzgC_OB-t2CGmv804zp89fxL-f1Q3Epo",
+    authDomain: "guest-house-cc429.firebaseapp.com",
+    projectId: "guest-house-cc429",
+    storageBucket: "guest-house-cc429.appspot.com",
+    messagingSenderId: "981806598773",
+    appId: "1:981806598773:web:d760a3a6785ef05410063c",
+    measurementId: "G-CECW9E5WE5"
+  };
+
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      
+        import{ getDatabase, ref, set, child, get}
+              from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+      
+              const database = getDatabase();
+      
+         const name = document.getElementById("nameInp");
+              const mobile = document.getElementById("mobInp");
+              const address = document.getElementById("addressInp");
+              const submit = document.getElementById("submit");
+      
+              function write(){
+
+                var c1 = document.getElementById("dateOpen").value;
+                var c2 = document.getElementById("dateClose").value;
+                var room = document.getElementById("rinp").value;
+              var bed3 = sessionStorage.getItem("bed2");
+              var type3 = sessionStorage.getItem("type2");
+              var rate3 = sessionStorage.getItem("rate2");
+      
+      if(name.value!="" && mobile.value!="" &&  address.value!=""){
+      
+        var j = Math.random() * 100;
+        j = Math.floor(j);
+
+        const p = document.createElement("p");
+const p2 = document.createElement("p");
+const p3 = document.createElement("p");
+const p4 = document.createElement("p");
+const p5 = document.createElement("p");
+const p6 = document.createElement("p");
+
+p.innerText = "Kumar Guest House";
+p2.innerText = "Booking Id-"+name.value+j;
+p3.innerText = bed3;
+p4.innerText = type3;
+p5.innerText = "Room-"+room;
+p6.innerText = "Pay Now";
+      
+p.style.cssText = "color:white; font-size:medium; display:block;"
+p2.style.cssText = "color:white; font-size:medium;"
+p3.style.cssText = "color:white; font-size:medium;"
+p4.style.cssText = "color:white; font-size:medium;"
+p5.style.cssText = "color:white; font-size:medium;"
+p6.style.cssText = "color:white; font-size:medium; background-color:red;float:right;width:30%;height:30px;"
+
+document.body.append(p);
+document.body.append(p2);
+document.body.append(p3);
+document.body.append(p4);
+document.body.append(p5);
+document.body.append(p6);
+
+      const db = getDatabase();
+      set(ref(db, "Guests/"+ name.value+j),{
+      Name: name.value,
+      Address: address.value,
+      Mobile: mobile.value,
+      Check_In: c1,
+      Check_Out: c2,
+      Rooms: room,
+      Bed: bed3,
+      Type: type3,
+      Price: rate3,
+      });
+      
+      swal({
+      title: "Welcome!",
+      text: "Your Room has been booked",
+      icon: "success",
+      button: "Next",
+      });
+      
+      document.getElementById("flag-dtl").style.display = "block";
+          document.getElementById("details").style.display = "none";
+      
+      }
+      
+      else{
+      swal({
+      text: "Please Fill All Fields",
+      });
+      }
+      
+      }
+      
+      submit.addEventListener("click", write);
+
+           let today = new Date(),
+      day = today.getDate(),
+      day2 = today.getDate()+1,
+      month = today.getMonth()+1 , 
+    year = today.getFullYear();
+    if(day<10){
+       day = '0'+day
+    }
+    if(day2<10){
+      day2 = '0'+day2
+    }
+    if(month<10){
+       month = '0'+month
+    }
+    today = year+'-'+month+'-'+day;
+   var today2 = year+'-'+month+'-'+day2;
+    document.getElementById("dateOpen").setAttribute("min",today);
+    document.getElementById("dateOpen").setAttribute("value",today);
+    document.getElementById("dateClose").setAttribute("min",today2);
+    document.getElementById("dateClose").setAttribute("value",today2);
+
+    document.getElementById("d").addEventListener("click", function(){
+    var d1 = document.getElementById("dateOpen").valueAsDate; 
+    var d2 = document.getElementById("dateClose").valueAsDate;
+    var diff = (d2 - d1)/(1000*60*60*24);
+    var dif = diff+1;
+    })
+
+        var db = document.getElementById("db");
+        var sb = document.getElementById("sb");
+        var lb = document.getElementById("lb");
+         var ac = document.getElementById("ac");
+        var nac = document.getElementById("nac");
+
+        document.getElementById("btn").addEventListener("click", function(){
+
+          if(db.checked && ac.checked){
+            var bed = "Doublebed";
+            var type = "A.C";
+            sessionStorage.setItem("bed2", bed);
+            sessionStorage.setItem("type2", type);
+          }
+
+          if(db.checked && nac.checked){
+            var bed = "Doublebed";
+            var type = "Non-A.C";
+            sessionStorage.setItem("bed2", bed);
+            sessionStorage.setItem("type2", type);
+          }
+
+          if(sb.checked && ac.checked){
+            var bed = "Singlebed";
+            var type = "A.C";
+            sessionStorage.setItem("bed2", bed);
+            sessionStorage.setItem("type2", type);
+          }
+
+          if(sb.checked && nac.checked){
+            var bed = "Singlebed";
+            var type = "Non-A.C";
+            sessionStorage.setItem("bed2", bed);
+            sessionStorage.setItem("type2", type);
+          }
+
+          if(lb.checked){
+            var bed = "Large Room";
+            var type = "A.C";
+            sessionStorage.setItem("bed2", bed);
+            sessionStorage.setItem("type2", type);
+          }
+
+          var rate = document.getElementById("price").innerText;
+          sessionStorage.setItem("rate2", rate);
+document.getElementById("flag-dtl").style.display = "none";
+  document.getElementById("details").style.display = "block";
+})
+
+
+document.getElementById("pref").addEventListener("click", function(){
+  var nor2 = document.getElementById("rinp").value;
+
+          if(lb.checked){
+          ac.checked = true;
+          nac.disabled = true;
+          document.getElementById("price").innerHTML = "Rs"+ nor2*3600;
+        }
+
+        else{
+          nac.disabled = false;
+        }
+
+        if(db.checked && ac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor2*2400;
+        }
+        if(db.checked && nac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor2*1600;
+        }
+        if(sb.checked && ac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor2*1600;
+        }
+        if(sb.checked && nac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor2*1200;
+        }
+})
+
+      document.getElementById("rinp").addEventListener("click", function(){
+
+        const dbRef = ref(getDatabase());   
+
+get(child(dbRef, "Rooms/"+ "Available")).then((snapshot)=>{    
+ if (snapshot.exists()) {
+  var maxroom = snapshot.val().AvailRoom;
+  document.getElementById("rinp").max = maxroom;
+ }
+});
+
+                  var nor = document.getElementById("rinp").value;
+                  document.getElementById("nop").innerHTML = nor * 2;
+
+                  if(lb.checked){
+          ac.checked = true;
+          nac.disabled = true;
+          document.getElementById("price").innerHTML = "Rs"+ nor*3600;
+        }
+        if(db.checked && ac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor*2400;
+        }
+        if(db.checked && nac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor*1600;
+        }
+        if(sb.checked && ac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor*1600;
+        }
+        if(sb.checked && nac.checked){
+          document.getElementById("price").innerHTML = "Rs"+ nor*1200;
+        }
+            })
+
+            class Calendar {
+  
+  constructor () {
+    this.monthDiv = document.querySelector('.cal-month__current')
+    this.headDivs = document.querySelectorAll('.cal-head__day')
+    this.bodyDivs = document.querySelectorAll('.cal-body__day')
+    this.nextDiv = document.querySelector('.cal-month__next')
+    this.prevDiv = document.querySelector('.cal-month__previous')
+  }
+  
+  init () {
+    moment.locale(window.navigator.userLanguage || window.navigator.language) 
+    
+    this.month = moment()
+    this.today = this.selected = this.month.clone()
+    this.weekDays = moment.weekdaysShort(true)
+    
+    this.headDivs.forEach((day, index) => {
+      day.innerText = this.weekDays[index]
+    })
+    
+    this.nextDiv.addEventListener('click', _ => { this.addMonth() })
+    this.prevDiv.addEventListener('click', _ => { this.removeMonth() })
+    
+    this.bodyDivs.forEach(day => {
+      day.addEventListener('click', e => {
+        const date = +e.target.innerHTML < 10 ? `0${e.target.innerHTML}` : e.target.innerHTML
+
+        if (e.target.classList.contains('cal-day__month--next')) {
+          this.selected = moment(`${this.month.add(1, 'month').format('YYYY-MM')}-${date}`)
+        } else if (e.target.classList.contains('cal-day__month--previous')) {
+          this.selected = moment(`${this.month.subtract(1, 'month').format('YYYY-MM')}-${date}`)
+        } else {
+          this.selected = moment(`${this.month.format('YYYY-MM')}-${date}`)
+        }
+
+        this.update()
+      })
+    })
+    
+    this.update()
+  }
+  
+  update () {
+    this.calendarDays = {
+      first: this.month.clone().startOf('month').startOf('week').date(),
+      last: this.month.clone().endOf('month').date()
+    }
+    
+    this.monthDays = {
+      lastPrevious: this.month.clone().subtract(1,'months').endOf('month').date(),
+      lastCurrent: this.month.clone().endOf('month').date()
+    }
+    
+    this.monthString = this.month.clone().format('MMMM YYYY')
+    
+    this.draw()
+  }
+  
+  addMonth () {
+    this.month.add(1, 'month')
+    
+    this.update()
+  }
+  
+  removeMonth () {
+    this.month.subtract(1, 'month')
+    
+    this.update()
+  }
+  
+  draw () {
+    this.monthDiv.innerText = this.monthString
+  
+    let index = 0
+
+    if (this.calendarDays.first > 1) {
+      for (let day = this.calendarDays.first; day <= this.monthDays.lastPrevious; index ++) {
+        this.bodyDivs[index].innerText = day++
+
+        this.cleanCssClasses(false, index)
+
+        this.bodyDivs[index].classList.add('cal-day__month--previous')
+      } 
+    }
+
+    let isNextMonth = false
+    for (let day = 1; index <= this.bodyDivs.length - 1; index ++) {
+      if (day > this.monthDays.lastCurrent) {
+        day = 1
+        isNextMonth = true
+      }
+
+      this.cleanCssClasses(true, index)
+
+      if (!isNextMonth) {
+        if (day === this.today.date() && this.today.isSame(this.month, 'day')) {
+          this.bodyDivs[index].classList.add('cal-day__day--today') 
+        }
+
+        if (day === this.selected.date() && this.selected.isSame(this.month, 'month')) {
+          this.bodyDivs[index].classList.add('cal-day__day--selected') 
+        }
+
+        this.bodyDivs[index].classList.add('cal-day__month--current')
+      } else {
+        this.bodyDivs[index].classList.add('cal-day__month--next')
+      }
+
+      this.bodyDivs[index].innerText = day++
+    }
+  }
+  
+  cleanCssClasses (selected, index) {
+    this.bodyDivs[index].classList.contains('cal-day__month--next') && 
+      this.bodyDivs[index].classList.remove('cal-day__month--next')
+    this.bodyDivs[index].classList.contains('cal-day__month--previous') && 
+      this.bodyDivs[index].classList.remove('cal-day__month--previous')
+    this.bodyDivs[index].classList.contains('cal-day__month--current') &&
+      this.bodyDivs[index].classList.remove('cal-day__month--current')
+    this.bodyDivs[index].classList.contains('cal-day__day--today') && 
+      this.bodyDivs[index].classList.remove('cal-day__day--today')
+    if (selected) {
+      this.bodyDivs[index].classList.contains('cal-day__day--selected') && 
+        this.bodyDivs[index].classList.remove('cal-day__day--selected') 
+    }
+  }
+}
+
+const cal = new Calendar()
+cal.init()
+      
+          </script>
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</html>
