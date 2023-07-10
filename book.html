@@ -421,21 +421,21 @@ font-family: 'Times New Roman', Times, serif;
 
     <script type="module">
       // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+  import { initializeApp } from "/firebase-app.js";  // Import the full configuration from your own firebase account
+  import { getAnalytics } from "/firebase-analytics.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "AIzaSyCNzgC_OB-t2CGmv804zp89fxL-f1Q3Epo",
-    authDomain: "guest-house-cc429.firebaseapp.com",
-    projectId: "guest-house-cc429",
-    storageBucket: "guest-house-cc429.appspot.com",
-    messagingSenderId: "981806598773",
-    appId: "1:981806598773:web:d760a3a6785ef05410063c",
-    measurementId: "G-CECW9E5WE5"
+    apiKey: "AIzaSyCNz...........-f1Q3Epo",
+    authDomain: "guest-house-429.firebaseapp.com",
+    projectId: "guest-house-429",
+    storageBucket: "guest-house-429.appspot.com",
+    messagingSenderId: "9818....8773",
+    appId: "1:981806598773:web:d76.........10063c",
+    measurementId: "G-CEC....E5"
   };
 
       
@@ -444,7 +444,7 @@ font-family: 'Times New Roman', Times, serif;
         const analytics = getAnalytics(app);
       
         import{ getDatabase, ref, set, child, get}
-              from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+              from "firebase-database.js";
       
               const database = getDatabase();
       
