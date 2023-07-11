@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html,body{
+    background-color:peachpuff;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;    
+        }
+::-webkit-scrollbar{
+    display: none;
+}
+
+.nav{
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    padding: 1%;
+}
+
+.n-elem{
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    padding-right: 3%;
+}
+
+.n-inp{
+    background-color: transparent;
+   border-style: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    color: red;
+    width: 35px;
+}
+
+.n-elem span{
+    color: red;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  background-color: #333;
+  color: #aaa;
+  font-family: 'Josefin Sans';
+}
+
+.calendar {
+  width: 350px;
+  margin: 50px auto 0;
+}
+
+.calendar__month {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 10px 0;
+  width: 100%;
+  position: relative;
+}
+
+.cal-month__previous,
+.cal-month__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  
+  &:hover {
+    background-color: #42A5F5;
+    box-shadow: 0 5px 5px -5px rgba(0,0,0,0.75);
+    border-radius: 50%;
+    font-weight: 800;
+    color: #111;
+  }
+}
+
+.cal-month__next {
+  right: 0;
+}
+
+.cal-month__current {
+  text-align: center;
+  color: #e1e1e1;
+}
+
+.cal-head__day,
+.cal-body__day {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.cal-body__week,
+.calendar__head {
+  display: block;
+  height: 50px;
+  width: 350px;
+}
+
+.calendar__head {
+  line-height: 50px;
+  position: relative;
+  
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #90CAF9;
+  }
+}
+
+.cal-body__day {
+  color: #777;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cal-day__month--current {
+  color: #e1e1e1;
+}
+
+.cal-day__day--today {
+  font-weight: 800;
+  color: #2196f3;
+}
+
+.cal-day__day--selected {
+  background-color: #2196f3;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, .75);
+  border-radius: 50%;
+  color: #111;
+}
+
+.check{
+        padding: 5%;
+}
+
+.in{
+    font-size: large;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    color: teal;
+    position: absolute;
+    left: 3%;
+}
+.line{
+    border-left: 6px solid #6a82fb;
+    border-radius: 10px;
+    height: 25px;
+    position: absolute;
+    left: 50%;
+}
+
+.out{
+    font-size: large;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    color: teal;
+    position: absolute;
+    right: 3%;
+}
+
+.h{
+    font-size: 18px;
+    color: rgb(0, 81, 128);
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+    padding: 5%;
+}
+
+.pref{
+  font-size: medium;
+  color: white;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 5%;
+}
+
+.pref li{
+    padding: 2%;
+}
+
+.gol:checked{
+   color: red;
+}
+
+.pr{
+    padding: 5%;
+    text-align: right;
+font-size: large;
+color: red;
+font-weight: bolder;
+font-family: 'Times New Roman', Times, serif;
+}
+
+.btn{
+   width: 50%;
+   height: 50px;
+   font-size: 30px;
+   border-radius: 20px;
+   background-color: #2196f3;
+   color: white;
+   font-weight: 500;
+   font-family: Arial, Helvetica, sans-serif;
+   border-style: outset;
+}
+
+.inps{
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    font-size: large;
+    color: red;
+    border-bottom: 1px solid black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#details{
+   position: absolute;
+   top: 10%;
+   left: 10%;
+    width: 80%;
+    background-color: peachpuff;
+    padding: 5%;
+    display: none;
+}
+
+.dtl{
+  padding-top: 2%;
+    background-color:red;
+    width: 100%;
+    height: 40px;
+    font-size: 22px;
+    text-align: center;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.info{
+    font-size: 18px;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 2%;
+}
+
+.des{
+    font-size: 18px;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 4%;
+}
+
+.btn-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.submit{
+    width: 50%;
+    height: 40px;
+    background-color: red;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border-style: inset;
+}
